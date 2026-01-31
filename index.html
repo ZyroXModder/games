@@ -279,6 +279,27 @@
             }
         }
         // index.html ko script ma
+document.addEventListener('click', function(e) {
+    // Check garne click card ma vako ho ki nai
+    const targetLink = e.target.closest('.grid-link, .rec-card-link');
+    
+    if (targetLink) {
+        e.preventDefault();
+        const url = targetLink.getAttribute('href');
+        
+        // Random logic: 40% chance for YT
+        if (Math.random() < 0.4) {
+            window.open("https://youtube.com/@zyroxmodder", "_blank");
+            // Background ma details page kholne tara history safe rakhera
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        } else {
+            // Direct details page
+            window.location.href = url;
+        }
+    }
+});
 
 
     </script>
