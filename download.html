@@ -3,120 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3462069190942652"
-     crossorigin="anonymous"></script>
-    <title>ZyroX Mods - Secure Link</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Cloud Secure Portal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
-        body { background: #050505; color: white; text-align: center; overflow-x: hidden; padding-bottom: 50px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #f9f9f9; color: #333; display: flex; flex-direction: column; align-items: center; scroll-behavior: smooth; }
 
-        /* TOP AD ZONE */
-        .top-ad-zone { width: 100%; min-height: 60px; background: #000; border-bottom: 1px solid #111; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: #333; font-size: 10px; }
-        
-        .brand-header { margin: 20px 0; animation: fadeInDown 0.8s ease; }
-        .brand-header h1 { font-size: 32px; font-weight: 900; color: #007bff; letter-spacing: 3px; }
-        .brand-header span { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 5px; }
-
-        .container { max-width: 450px; margin: auto; padding: 0 20px; }
-
-        /* MAIN CARD */
-        .card { 
-            background: linear-gradient(145deg, #111, #0a0a0a); 
-            border-radius: 30px; padding: 40px 25px; 
-            border: 1px solid rgba(255,255,255,0.03);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            animation: cardPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+        .header {
+            width: 100%; background: #2c3e50; color: #ffffff;
+            text-align: center; padding: 12px; font-weight: 700;
+            font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+            border-bottom: 3px solid #ff4d4d;
         }
 
-        /* ADS BOX */
-        .ad-container { 
-            background: rgba(0, 123, 255, 0.03); border: 2px dashed #1a1a1a; 
-            border-radius: 20px; padding: 25px; margin: 20px 0 10px; cursor: pointer;
-            transition: 0.4s; position: relative;
+        .container { width: 95%; max-width: 450px; padding: 10px 5px; text-align: center; }
+
+        .card {
+            background: #fff; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 12px;
+            border: 1px solid #eee; text-align: left;
         }
-        .ad-container:hover { border-color: #007bff; background: rgba(0, 123, 255, 0.07); }
-        .ad-info { font-size: 12px; color: #444; margin-top: 10px; }
+        .card img { width: 100%; height: auto; display: block; cursor: pointer; }
+        .card-body { padding: 10px; }
+        .card-tag { font-size: 0.6rem; color: #0288d1; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; display: block; }
+        .card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; color: #222; }
+        .card-text { font-size: 0.75rem; color: #666; line-height: 1.3; }
 
-        /* INTERNAL AD SLOTS */
-        .extra-ad-slot { margin: 10px 0 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 12px; font-size: 10px; color: #333; border: 1px solid #0f0f0f; }
+        .timer-wrap { margin: 10px 0; display: inline-block; width: 100%; }
+        .timer-display {
+            border: 2px solid #0288d1; border-radius: 50px; color: #0288d1;
+            padding: 8px 18px; font-weight: 600; font-size: 0.85rem; display: inline-block;
+        }
 
-        /* UI ELEMENTS */
-        .status-badge { background: rgba(0,123,255,0.1); color: #007bff; padding: 5px 15px; border-radius: 50px; font-size: 11px; font-weight: 700; margin-bottom: 15px; display: inline-block; }
-        .timer-val { font-size: 40px; font-weight: 900; margin: 10px 0; color: #fff; }
+        .btn-mustard {
+            background: #bcbc44; color: #fff; border: none;
+            padding: 8px 25px; border-radius: 30px; font-size: 0.85rem;
+            font-weight: 700; cursor: pointer; transition: 0.2s; outline: none;
+        }
 
-        .btn { display: block; width: 100%; padding: 20px; border-radius: 18px; font-weight: 800; border: none; font-size: 16px; text-decoration: none; cursor: pointer; transition: 0.3s; }
-        .btn-locked { background: #1a1a1a; color: #444; pointer-events: none; }
-        .btn-ready { background: #007bff; color: white; display: none; box-shadow: 0 10px 30px rgba(0,123,255,0.4); animation: pulse 2s infinite; }
+        /* Fixed Hidden Class - Added !important to force hide */
+        .hidden { display: none !important; }
 
-        /* FOOTER */
-        .footer-text { margin-top: 40px; padding: 20px; color: #333; font-size: 11px; border-top: 1px solid #111; }
+        .status-box {
+            display: none; background: #e8f5e9; border: 1px solid #4caf50;
+            color: #2e7d32; padding: 10px; border-radius: 8px;
+            margin: 10px 0; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+        }
 
-        /* ANIMATIONS */
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes cardPop { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); } 70% { box-shadow: 0 0 0 20px rgba(0,123,255,0); } 100% { box-shadow: 0 0 0 0 rgba(0,123,255,0); } }
+        .spacer { height: 100px; } 
     </style>
 </head>
-<body onclick="openPop()">
+<body>
 
-    <div class="top-ad-zone">[ TOP BANNER AD CODE ]</div>
+    <div class="header">Cloud Secure Portal</div>
 
-    <div class="brand-header">
-        <h1>ZYROX<span>MODS</span></h1>
-        <p id="target-game" style="color: #007bff; font-size: 10px; letter-spacing: 2px; margin-top: 5px;">SECURE FILE GATEWAY</p>
+    <div class="container" id="p1">
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500"><div class="card-body"><span class="card-tag">SCANNING</span><div class="card-title">Securing Data Tunnel...</div><p class="card-text">Verification of secure nodes for private file access.</p></div></div>
+
+        <div class="timer-wrap">
+            <button class="btn-mustard" id="b1" onclick="run1()">Start Verification</button>
+            <div id="t1" class="timer-display hidden">Processing Step 1: 15s</div>
+        </div>
+
+        <div id="msg1" class="status-box" onclick="document.getElementById('next1').scrollIntoView({behavior:'smooth'})">
+            Step 1 Complete! Scroll for link.
+        </div>
+
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500"><div class="card-body"><span class="card-tag">PROMO</span><div class="card-title">Cloud VPS Hosting</div><p class="card-text">Ultra-fast servers with worldwide delivery nodes.</p></div></div>
+        
+        <div class="spacer"></div>
+
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?w=500"><div class="card-body"><span class="card-tag">NETWORK</span><div class="card-title">Encrypted Storage</div><p class="card-text">Protect your files with military-grade encryption.</p></div></div>
+
+        <button class="btn-mustard hidden" id="next1" onclick="go2()">Next Step</button>
     </div>
 
-    <div class="container">
+    <div class="container hidden" id="p2">
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500"><div class="card-body"><span class="card-tag">AUTH</span><div class="card-title">Final Authentication</div><p class="card-text">Your unique game token is being generated.</p></div></div>
+
+        <div class="timer-wrap">
+            <button class="btn-mustard" id="b2" onclick="run2()">Generate Game Link</button>
+            <div id="t2" class="timer-display hidden">Generating Link: 15s</div>
+        </div>
+
+        <div id="msg2" class="status-box" onclick="document.getElementById('final').scrollIntoView({behavior:'smooth'})">
+            Step 2 Complete! Scroll for download.
+        </div>
+
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500"><div class="card-body"><span class="card-tag">BLOG</span><div class="card-title">New Mod Apps 2026</div><p class="card-text">Latest secure cloud downloads available now.</p></div></div>
         
-        <div class="card" id="box1">
-            <div class="status-badge">STEP 1/2: INTERACTION CHECK</div>
-            
-            <div class="ad-container" onclick="runTimer1()">
-                <i class="fa-solid fa-shield-halved" style="font-size: 30px; color: #007bff; margin-bottom: 10px;"></i>
-                <p style="font-weight: 700;">[ NATIVE AD 1 HERE ]</p>
-                <div class="ad-info">CLICK TO START VERIFICATION</div>
-            </div>
+        <div class="spacer"></div>
 
-            <div class="extra-ad-slot">[ BANNER AD BELOW CLICK ]</div>
+        <div class="card" onclick="ad()"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500"><div class="card-body"><span class="card-tag">FINAL</span><div class="card-title">File Ready</div><p class="card-text">Click below to start your download.</p></div></div>
 
-            <div id="timer1" style="display:none;">
-                <div class="timer-val" id="count1">15</div>
-                <p style="font-size: 11px; color: #444;">SECURELY CONNECTING...</p>
-            </div>
-            <button class="btn btn-locked" id="l1">LOCKED</button>
-        </div>
-
-        <div class="card" id="box2" style="display:none;">
-            <div class="status-badge" style="background: rgba(255,51,102,0.1); color: #ff3366;">STEP 2/2: FINAL UNLOCK</div>
-
-            <div class="ad-container" onclick="runTimer2()" style="border-color: #ff3366;">
-                <i class="fa-solid fa-lock-open" style="font-size: 30px; color: #ff3366; margin-bottom: 10px;"></i>
-                <p style="font-weight: 700;">[ NATIVE AD 2 HERE ]</p>
-                <div class="ad-info">CLICK TO REVEAL DOWNLOAD</div>
-            </div>
-
-            <div class="extra-ad-slot">[ BANNER AD BELOW CLICK ]</div>
-
-            <div id="timer2" style="display:none;">
-                <div class="timer-val" id="count2" style="color: #ff3366;">3</div>
-                <p style="font-size: 11px; color: #444;">GENERATING LINK...</p>
-            </div>
-            <a href="#" class="btn btn-ready" id="dl-btn">DOWNLOAD NOW <i class="fa-solid fa-arrow-down-long"></i></a>
-        </div>
-
-        <div class="footer-text">
-            <p>ZyroX Mods - Safe & Secure Mods</p>
-            <p style="margin-top:5px; opacity:0.5;">&copy; 2026 ZyroX Team</p>
-        </div>
-
+        <a href="#" id="final" class="btn-mustard hidden" style="background:#2e7d32; text-decoration:none; display:inline-block;">Download Now</a>
     </div>
 
     <script>
-        // --- GAME DATABASE: Yaha game ko ID ra Real Link halnus ---
         const gameDatabase = {
             "frag": "https://www.mediafire.com/file/frag-mod.apk",
             "stick": "https://www.mediafire.com/file/stick-mod.apk",
@@ -129,48 +113,48 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const gameId = urlParams.get('id');
-        
-        // Link filter garne logic
-        const fileUrl = gameDatabase[gameId] || "https://t.me/ZyroXMods"; 
-        if(gameId) document.getElementById('target-game').innerText = "Target: " + gameId.toUpperCase();
+        const finalBtn = document.getElementById('final');
 
-        let popDone = false;
-
-        function openPop() {
-            if(!popDone) {
-                window.open('https://t.me/ZyroXMods', '_blank'); // Your Direct Link Here
-                popDone = true;
-            }
+        if (gameId && gameDatabase[gameId]) {
+            finalBtn.href = gameDatabase[gameId];
+        } else {
+            finalBtn.href = "#"; 
         }
 
-        function runTimer1() {
-            window.open('https://t.me/ZyroXMods', '_blank'); 
-            document.getElementById('timer1').style.display = "block";
-            let c1 = 15;
-            const int1 = setInterval(() => {
-                c1--;
-                document.getElementById('count1').innerText = c1;
-                if(c1 <= 0) {
-                    clearInterval(int1);
-                    document.getElementById('box1').style.display = "none";
-                    document.getElementById('box2').style.display = "block";
+        function ad() { window.open('https://your-ad-link.com', '_blank'); }
+
+        function run1() {
+            document.getElementById('b1').classList.add('hidden');
+            const d = document.getElementById('t1'); d.classList.remove('hidden');
+            let t = 15;
+            const i = setInterval(() => {
+                t--; d.innerText = "Processing Step 1: " + t + "s";
+                if(t <= 0) {
+                    clearInterval(i);
+                    d.classList.add('hidden');
+                    document.getElementById('msg1').style.display = "block";
+                    document.getElementById('next1').classList.remove('hidden');
                 }
             }, 1000);
         }
 
-        function runTimer2() {
-            window.open('https://t.me/ZyroXMods', '_blank'); 
-            document.getElementById('timer2').style.display = "block";
-            let c2 = 3;
-            const int2 = setInterval(() => {
-                c2--;
-                document.getElementById('count2').innerText = c2;
-                if(c2 <= 0) {
-                    clearInterval(int2);
-                    document.getElementById('timer2').style.display = "none";
-                    const b = document.getElementById('dl-btn');
-                    b.style.display = "block";
-                    b.href = fileUrl; // Automatically picks link from database
+        function go2() {
+            document.getElementById('p1').classList.add('hidden');
+            document.getElementById('p2').classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function run2() {
+            document.getElementById('b2').classList.add('hidden');
+            const d = document.getElementById('t2'); d.classList.remove('hidden');
+            let t = 15;
+            const i = setInterval(() => {
+                t--; d.innerText = "Generating Link: " + t + "s";
+                if(t <= 0) {
+                    clearInterval(i);
+                    d.classList.add('hidden');
+                    document.getElementById('msg2').style.display = "block";
+                    document.getElementById('final').classList.remove('hidden');
                 }
             }, 1000);
         }
