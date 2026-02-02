@@ -75,6 +75,45 @@
         .v-container { width: 100%; padding-bottom: 56.25%; height: 0; position: relative; }
         .v-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
+        /* --- SCREENSHOT SLIDER STYLES --- */
+.slider-wrapper { 
+    width: 100%; 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 22px; 
+    border: 1px solid var(--border); 
+    background: var(--card); 
+    margin-bottom: 10px;
+}
+.slider { 
+    display: flex; 
+    transition: transform 0.5s ease-in-out; 
+}
+.slider img { 
+    width: 100%; 
+    flex-shrink: 0; 
+    aspect-ratio: 16/9; 
+    object-fit: cover; 
+}
+.dots-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    margin-bottom: 30px; 
+}
+.dot { 
+    width: 8px; 
+    height: 8px; 
+    background: rgba(255,255,255,0.2); 
+    border-radius: 50%; 
+    transition: 0.3s; 
+}
+.dot.active { 
+    background: var(--pink); 
+    width: 20px; 
+    border-radius: 10px; 
+}
+        
         /* STEPS SECTION */
         .step-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px; }
         .step-item { display: flex; align-items: center; gap: 15px; background: var(--card); padding: 15px; border-radius: 20px; border: 1px solid var(--border); }
@@ -122,6 +161,15 @@
             <a href="https://t.me/ZyroXMods" class="s-link"><i class="fa-solid fa-bug"></i> Report</a>
         </div>
 
+        <div class="section-title reveal" style="animation-delay: 0.85s;">SCREENSHOTS</div>
+<div class="slider-wrapper reveal" style="animation-delay: 0.9s;">
+    <div class="slider" id="slider-content">
+        </div>
+</div>
+<div class="dots-container" id="dots-content">
+</div>
+        
+
         <div class="section-title reveal" style="animation-delay: 0.7s;">GAMEPLAY PREVIEW</div>
         <div class="v-card reveal" style="animation-delay: 0.8s;">
             <div class="v-container">
@@ -149,7 +197,7 @@
         
     <script>
         const gameData = {
-            "frag": { title: "Frag Pro Shooter", ver: "v4.17.2", date: "2026-1-23", genre: "Action", img: "frag.png", bg: "fragbg.png", vid: "https://www.youtube.com/watch?v=526SNKSqmyQ", dl: "download.html?id=frag" },
+            "frag": { title: "Frag Pro Shooter", ver: "v4.17.2", date: "2026-1-23", genre: "Action", img: "frag.png", bg: "fragbg.png", slides: ["frag.jpg", "frag.jpg", "frag.jpg"], vid: "https://www.youtube.com/watch?v=526SNKSqmyQ", dl: "download.html?id=frag" },
             "stick": { title: "Stick War Legacy", ver: "v2025.1", date: "2026-01-05", genre: "Strategy", img: "stick.png", bg: "stickbg.png", vid: "https://www.youtube.com/embed/dQw4w9WgXcQ", dl: "#" },
             "super": { title: "Super Bear Adventure", ver: "v10.5", date: "2026-01-08", genre: "Adventure", img: "super.png", bg: "superbg.png", vid: "https://www.youtube.com/embed/dQw4w9WgXcQ", dl: "#" },
             "dude": { title: "Dude Theft Wars", ver: "v0.9.0.9f6", date: "2026-01-31", genre: "Action", img: "dude.png", bg: "dudebg.png", vid: "https://www.youtube.com/embed/OwTz8IeFL7M", dl: "https://sub2unlock.me/4AsA4oV" },
@@ -177,7 +225,41 @@
             document.getElementById('video').src = game.vid;
             document.getElementById('dl-link').href = game.dl;
             document.getElementById('page-title').innerText = game.title + " - Details";
-        }
+// Slider Logic
+const sliderBox = document.getElementById('slider-content');
+const dotsBox = document.getElementById('dots-content');
+
+if(game.slides && game.slides.length > 0) {
+    game.slides.forEach((imgSrc, index) => {
+        // Image element banaune
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        sliderBox.appendChild(img);
+        
+        // Dot element banaune
+        const dot = document.createElement('div');
+        dot.className = index === 0 ? 'dot active' : 'dot';
+        dotsBox.appendChild(dot);
+    });
+
+    // Auto Slide Logic (3 seconds)
+    let currentSlide = 0;
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % game.slides.length;
+        sliderBox.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Dots update garne
+        document.querySelectorAll('.dot').forEach((d, i) => {
+            d.classList.toggle('active', i === currentSlide);
+        });
+    }, 3000);
+} else {
+    // Yadi slide chaina vane tyo section nai hide garne
+    document.querySelector('.slider-wrapper').style.display = 'none';
+    document.querySelectorAll('.section-title')[1].style.display = 'none'; // Screenshots title
+}
+
+        
     </script>
         <script>(function(s){s.dataset.zone='10546845',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 <script>(function(s){s.dataset.zone='10546863',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
