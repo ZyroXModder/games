@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZyroX Mods - Maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        :root { --pink: #007bff; --bg: #0d0d0d; --card: #161616; --border: rgba(255, 255, 255, 0.08); }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: #fff; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+        .container { max-width: 400px; text-align: center; padding: 30px; background: var(--card); border-radius: 30px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .icon-box { font-size: 50px; color: var(--pink); margin-bottom: 20px; animation: pulse 2s infinite; }
+        
+        h1 { font-size: 26px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        
+        p { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 25px; }
+
+        .back-btn { display: inline-block; padding: 12px 25px; background: var(--pink); color: #fff; text-decoration: none; border-radius: 15px; font-weight: 600; font-size: 14px; transition: 0.3s; }
+        .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3); }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon-box">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <h1>Under Maintenance</h1>
+        <p>We are updating this page with new features. Please check back soon. Thank you!</p>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-house"></i> Return Home</a>
+    </div>
+
+</body>
+</html>
