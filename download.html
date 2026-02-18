@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="monetag" content="be056f323ee7886eb24ba624c5571ce4">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Link Portal</title>
     <style>
@@ -24,14 +23,17 @@
             margin-bottom: 25px;
         }
 
-        .top-instruction { font-size: 0.9rem; color: #64748b; margin-bottom: 25px; font-weight: 600; }
+        .top-instruction { font-size: 0.9rem; color: #64748b; margin-bottom: 25px; font-weight: 500; }
 
-        /* Updated Image Container Styles */
+        /* Updated Image Container Styles - Clickable cursor added */
         .page-image { 
             width: 100%; height: 180px; object-fit: cover; 
             border-radius: 12px; margin: 15px 0; 
             border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
+        .page-image:active { transform: scale(0.98); }
         
         .img-caption { font-size: 0.8rem; color: #94a3b8; line-height: 1.4; margin-bottom: 15px; }
 
@@ -70,13 +72,13 @@
         <div class="white-card">
             <p class="top-instruction">Welcome to Secure Tunnel. Please follow the steps below to securely access your file.</p>
             
-            <img src="an.png" alt="Step 1" class="page-image">
+            <img src="main.png" alt="Step 1" class="page-image" onclick="handleDownload()">
             <p class="img-caption">System scanning for secure connection.<br>Please do not refresh this page.</p>
             
             <h2 style="font-size: 1.3rem; margin-bottom: 10px;">Step 1: Security Scan</h2>
             <button class="btn-timer" id="btn1" onclick="startTimer(1, 10)">VERIFY NOW</button>
             
-            <img src="an.png" alt="Step 1.2" class="page-image">
+            <img src="main.png" alt="Step 1.2" class="page-image" onclick="handleDownload()">
             <p class="img-caption">Data integrity check in progress.<br>Establishing secure tunnel...</p>
         </div>
         <button class="btn-next" id="next1" onclick="nextPage(2)">CONTINUE TO STEP 2</button>
@@ -86,13 +88,13 @@
         <div class="white-card">
             <p class="top-instruction">Processing encryption keys. This ensures your link is safe and private.</p>
             
-            <img src="an.png" alt="Step 2" class="page-image">
+            <img src="https://example.com/your-image3.png" alt="Step 2" class="page-image" onclick="handleDownload()">
             <p class="img-caption">Encrypting the final destination link.<br>Almost ready to generate.</p>
             
             <h2 style="font-size: 1.3rem; margin-bottom: 10px;">Step 2: Encryption</h2>
             <button class="btn-timer" id="btn2" onclick="startTimer(2, 10)">FINALIZE LINK</button>
             
-            <img src="an.png" alt="Step 2.2" class="page-image">
+            <img src="https://example.com/your-image4.png" alt="Step 2.2" class="page-image" onclick="handleDownload()">
             <p class="img-caption">Cloud synchronization complete.<br>Verifying final security layers.</p>
         </div>
         <button class="btn-next" id="next2" onclick="nextPage(3)">FINAL STEP</button>
@@ -102,7 +104,7 @@
         <div class="white-card">
             <p class="top-instruction">Final check completed. Your secure destination link is ready.</p>
             
-            <img src="an.png" alt="Final Step" class="page-image">
+            <img src="https://example.com/your-image5.png" alt="Final Step" class="page-image" onclick="handleDownload()">
             <p class="img-caption">Secure link has been generated.<br>Click below to open the URL.</p>
             
             <h2 style="font-size: 1.3rem; margin-bottom: 10px;">Final Step: Ready</h2>
@@ -113,7 +115,7 @@
                 Press the OPEN LINK button to open your link.
             </div>
             
-            <img src="an.png" alt="Final Step 2" class="page-image">
+            <img src="https://example.com/your-image6.png" alt="Final Step 2" class="page-image" onclick="handleDownload()">
             <p class="img-caption">Everything is ready to go.<br>Safe redirection guaranteed.</p>
         </div>
         <button class="btn-next" id="next3" onclick="handleDownload()">OPEN LINK (SECURE)</button>
@@ -164,7 +166,7 @@
         }
 
         function handleDownload() {
-            window.location.href = downloadLink;
+            window.open(downloadLink, '_blank');
         }
     </script>
     <script>(function(s){s.dataset.zone='10546845',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
